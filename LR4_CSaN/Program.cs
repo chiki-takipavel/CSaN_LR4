@@ -114,8 +114,9 @@ namespace LR4_CSaN
                     string responseCode = head[0].Substring(head[0].IndexOf(" ") + 1);
                     Console.WriteLine($"Запрос к {host}\nОтвет: {host} {responseCode}\n");
                     serverStream.CopyTo(clientStream);
+
+                    client.Close();
                 }
-                client.Close();
             }
             catch
             {
