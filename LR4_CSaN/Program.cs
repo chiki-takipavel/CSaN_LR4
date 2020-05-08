@@ -78,7 +78,7 @@ namespace LR4_CSaN
             try
             {
                 using NetworkStream clientStream = new NetworkStream(client);
-                while (client.Connected)
+                if (client.Connected)
                 {
                     string request = RecieveMessage(clientStream, true);
 
@@ -115,6 +115,7 @@ namespace LR4_CSaN
                     Console.WriteLine($"Запрос к {host}\nОтвет: {host} {responseCode}\n");
                     serverStream.CopyTo(clientStream);
                 }
+                client.Close();
             }
             catch
             {
