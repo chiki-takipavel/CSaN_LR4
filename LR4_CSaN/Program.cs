@@ -87,7 +87,7 @@ namespace LR4_CSaN
                     string host = matchHost.Groups["host"].Value;
                     if (!int.TryParse(matchHost.Groups["port"].Value, out int port)) { port = 80; }
 
-                    if ((blackList.Count != 0) && (blackList.FirstOrDefault(s => s.Contains(host)) != null))
+                    if (blackList.FirstOrDefault(s => s.Contains(host)) != null)
                     {
                         byte[] proxyResponse = GetHTTPError(403, "Forbidden");
                         clientStream.Write(proxyResponse, 0, proxyResponse.Length);
